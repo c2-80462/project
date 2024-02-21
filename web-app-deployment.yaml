@@ -16,9 +16,7 @@ spec:
       - name: web
         image: rajatkokane/projectfinal
         ports:
-        - containerPort: 8090
-
-
+        - containerPort: 80
 
 ---
 
