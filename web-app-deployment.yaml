@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-app2
+spec:
+  selector:
+    matchLabels:
+      app: web-app
+  replicas: 3 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: web-app
+    spec:
+      containers:
+      - name: web
+        image: rajatkokane/projectfinal
+        ports:
+        - containerPort: 8090
+
+
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-app1
+  labels:
+    run: web-app
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 8090
+    protocol: TCP
+  selector:
+    run: web-app
